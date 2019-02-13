@@ -1,5 +1,6 @@
 [requires]
 cpr/1.3.0@zimmerk/stable
+catch2/2.5.0@bincrafters/stable
 
 [generators]
 cmake

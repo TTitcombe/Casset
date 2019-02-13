@@ -83,5 +83,4 @@ add_executable(Casset ${SRC_FILES} ${HDR_FILES})
 ## Unit Tests
 ###############################################################################
 
-add_executable(UnitTests tests/BasicTest.cpp)
-# target_link_libraries(UnitTests CONAN_PKG::gtest)
+add_subdirectory ( tests )
