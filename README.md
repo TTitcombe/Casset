@@ -27,7 +27,7 @@ Clone this repository and build the target "casset" with cmake
 
 ## Contributing
 
-Refer to [the contribution docs](CONTRIBUTING.MD)
+Refer to [the contribution docs](CONTRIBUTING.md)
 
 
 ## Versioning
