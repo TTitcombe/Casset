@@ -1,5 +1,5 @@
 [requires]
-cpr/1.3.0@DEGoodmanWilson/stable
+cpr/1.3.0@zimmerk/stable
 
 [generators]
 cmake
