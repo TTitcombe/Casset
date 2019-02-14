@@ -68,20 +68,10 @@ endif()
 ## Executable
 ###############################################################################
 
-set(SRC_FILES
-  src/main.cpp
-  # add any additional source files here
-)
-
-set(HDR_FILES
-  # add any additional header files here
-)
-
-add_executable(Casset ${SRC_FILES} ${HDR_FILES})
+add_subdirectory ( src )
 
 ###############################################################################
 ## Unit Tests
 ###############################################################################
 
-add_executable(UnitTests tests/BasicTest.cpp)
-target_link_libraries(UnitTests CONAN_PKG::gtest)
+add_subdirectory ( tests )

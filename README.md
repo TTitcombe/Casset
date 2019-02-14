@@ -4,16 +4,22 @@ Casset (C++ Asset management) allows for tracking, comparison, and analysis of p
 
 ## How to use
 
-Clone this repository and build the target "casset" with cmake 
-```cmake casset```
+Clone this repository and build the target "Casset" with cmake 
+```cmake Casset```
 
 # Casset
 
 ## Getting Started
 
 ### Prerequisites
+Install [CMAKE](https://cmake.org/)
+Install [Conan](https://conan.io/)
+Once you have installed [Conan](https://conan.io/), you need to add the following remotes using ```conan remote add x y``` where x is the local name for the remote and y is path to the remote:
+* zimmerk https://api.bintray.com/conan/zimmer/conan
+* bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 
 ### Installing
+Clone this repository and build it with CMake (preferable in a directory outside your source)
 
 ## Running the tests
 
@@ -27,7 +33,7 @@ Clone this repository and build the target "casset" with cmake
 
 ## Contributing
 
-Refer to [the contribution docs](CONTRIBUTING.MD)
+Refer to [the contribution docs](CONTRIBUTING.md)
 
 
 ## Versioning
