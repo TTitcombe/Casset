@@ -1,5 +1,5 @@
 set(SRC_FILES
-  src/main.cpp
+  main.cpp
   # add any additional source files here
 )
 
