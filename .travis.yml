@@ -16,6 +16,7 @@ matrix:
 script:
   - sudo apt install python3-pip
   - sudo pip3 install conan
+  - conan user
   - conan remote add zimmerk https://api.bintray.com/conan/zimmer/conan
   - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
   - mkdir build
