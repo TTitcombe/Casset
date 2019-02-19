@@ -1,0 +1,22 @@
+#sudo: required
+dist: xenial
+language: cpp
+
+matrix:
+  include:
+    - compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env: COMPILER=g++-7
+
+script:
+  - pip install conan
+  - conan remote add zimmerk https://api.bintray.com/conan/zimmer/conan
+  - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug .. && make
