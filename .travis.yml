@@ -14,7 +14,7 @@ matrix:
       env: COMPILER=g++-7
 
 script:
-  - sudo apt install python3-pip python3-setuptools
+  - sudo apt install python3-pip python3-setuptools xutils-dev
   - sudo pip3 install conan
   - conan user
   - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
