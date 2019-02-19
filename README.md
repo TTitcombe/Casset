@@ -15,7 +15,7 @@ Clone this repository and build the target "Casset" with cmake
 Install [CMAKE](https://cmake.org/)
 Install [Conan](https://conan.io/)
 Once you have installed [Conan](https://conan.io/), you need to add the following remotes using ```conan remote add x y``` where x is the local name for the remote and y is path to the remote:
-* zimmerk https://api.bintray.com/conan/zimmer/conan
+* zimmerk https://api.bintray.com/conan/zimmerk/conan
 * bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 
 ### Installing
