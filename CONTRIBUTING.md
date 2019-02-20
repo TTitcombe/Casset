@@ -11,14 +11,13 @@ Please refer to [LLVM documentation](https://llvm.org/docs/CodingStandards.html)
 
 ## Branching
 
-- Branch your feature off from 'dev'
+- Branch your feature off from 'master'
 
 - Before creating pull requests, rebase your feature branch
   - Reorder and squash small successive commits which may have occurred
     during iterative development to improve readability of the feature
     branch.
 
-- Create pull requests against 'dev'
+- Create pull requests against 'master'
 
-- For important bug fixes, branch off 'master' to create a bug-fix-only
-  feature branch.
+- Before release, a 'release' branch will be created off 'master'.
