@@ -2,15 +2,15 @@
 # Casset
 
 Casset (C++ Asset management) allows for tracking, comparison, and analysis of portfolios of stocks and bonds.
+Casset currently fetches stock data using IEX api.
 
 ## How to use
-
-Clone this repository and build the target "Casset" with cmake 
-```cmake Casset```
-
-# Casset
+Once you have Casset (see below), build Casset.sln. This will open a command prompt which asks for your IEX key.
+Upon entering your IEX key, Casset will attend to get the latest Apple stock data.
 
 ## Getting Started
+Clone this repository and build the target "Casset" with cmake 
+```cmake Casset```
 
 ### Prerequisites
 Install [CMAKE](https://cmake.org/)
@@ -18,6 +18,8 @@ Install [Conan](https://conan.io/)
 Once you have installed [Conan](https://conan.io/), you need to add the following remotes using ```conan remote add x y``` where x is the local name for the remote and y is path to the remote:
 * zimmerk https://api.bintray.com/conan/zimmerk/conan
 * bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+
+Get an [IEX account](https://iexcloud.io/) and make a note of your keys.
 
 ### Installing
 Clone this repository and build it with CMake (preferable in a directory outside your source)
