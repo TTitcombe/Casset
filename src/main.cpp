@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
 
   const std::string url = "https://cloud.iexapis.com/beta/tops";
 
-  auto parameters = cpr::Parameters{{"token",""},
+  auto parameters = cpr::Parameters{{"token","sk_ba8b11952918453aa9bcdd1d21a259b9"},
 				    {"symbols","aapl"}};
   auto r = cpr::Get(cpr::Url{url}, parameters);
 
