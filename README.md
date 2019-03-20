@@ -22,6 +22,8 @@ Once you have installed [Conan](https://conan.io/), you need to add the followin
 ### Installing
 Clone this repository and build it with CMake (preferable in a directory outside your source)
 
+NOTE: Due to an issue in the current conan/cmake setup, Windows builds MUST be in Release for the time being.
+
 ## Running the tests
 
 ## Deployment

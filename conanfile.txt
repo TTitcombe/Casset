@@ -4,3 +4,6 @@ catch2/2.5.0@bincrafters/stable
 
 [generators]
 cmake
+
+[options]
+cpr:use_openssl=False
