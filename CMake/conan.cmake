@@ -361,11 +361,11 @@ endfunction()
 
 
 macro(conan_load_buildinfo)
-    if(CONAN_CMAKE_MULTI)
-        set(_CONANBUILDINFO conanbuildinfo_multi.cmake)
-    else()
+    #if(CONAN_CMAKE_MULTI)
+    #    set(_CONANBUILDINFO conanbuildinfo_multi.cmake)
+    #else()
         set(_CONANBUILDINFO conanbuildinfo.cmake)
-    endif()
+    #endif()
     # Checks for the existence of conanbuildinfo.cmake, and loads it
     # important that it is macro, so variables defined at parent scope
     if(EXISTS "${CMAKE_CURRENT_BINARY_DIR}/${_CONANBUILDINFO}")
@@ -379,8 +379,7 @@ endmacro()
 
 macro(conan_cmake_run)
     parse_arguments(${ARGV})
-
-    if(CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE AND NOT CONAN_EXPORTED)
+    if(CMAKE_MSVC_GENERATOR)
         set(CONAN_CMAKE_MULTI ON)
         message(STATUS "Conan: Using cmake-multi generator")
     else()
