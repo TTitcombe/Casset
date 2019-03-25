@@ -19,8 +19,6 @@ Once you have installed [Conan](https://conan.io/), you need to add the followin
 * zimmerk https://api.bintray.com/conan/zimmerk/conan
 * bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 
-Get an [IEX account](https://iexcloud.io/) and make a note of your keys.
-
 ### Installing
 Clone this repository and build it with CMake (preferable in a directory outside your source)
 

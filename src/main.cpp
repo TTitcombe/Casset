@@ -3,18 +3,22 @@
 #include <string>
 #include <cpr/cpr.h>
 
+cpr::Response getChart(const std::string &symbol) {
+  std::string url = "https://api.iextrading.com/1.0";
+  url += "/stock/"+symbol+"/chart";
+
+  std::cout << "Starting GET req at url " << url << std::endl;
+  return cpr::Get(cpr::Url{url},
+                  cpr::VerifySsl{false});  // CPR issue #194
+}
+
 int main(int argc, char **argv) {
-  std::cout << "Please enter your IEX token: " << std::endl;
-  std::string token;
-  std::cin >> token;
-
-  std::cout << "Starting GET req" << std::endl;
-
-  const std::string url = "https://cloud.iexapis.com/beta/tops";
-  auto params = cpr::Parameters{{"token", token},
-                                {"symbols", "aapl"}};
-  auto r = cpr::Get(cpr::Url{url}, params);
-
-  std::cout << "Status code: " << r.status_code << std::endl;
+  auto r = getChart("aapl");
+  if (r.status_code == 200) {
+    std::cout << "GET successful." << std::endl;
+    std::cout << "Text " << r.text << std::endl;
+  } else {
+    std::cout << "GET not successful. Status code is " << r.status_code << std::endl;
+  }
   std::cout << "Done." << std::endl;
 }
