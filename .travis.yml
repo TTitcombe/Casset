@@ -11,6 +11,7 @@ matrix:
             - ubuntu-toolchain-r-test
           packages:
             - g++-7
+            - cppcheck
       env: COMPILER=g++-7
 
 script:
@@ -24,4 +25,5 @@ script:
   - mkdir build
   - cd build
   - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug .. && make
+  - cppcheck --quiet --error-exitcode=1 .
   - ./bin/UnitTests
