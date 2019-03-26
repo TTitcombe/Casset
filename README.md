@@ -2,15 +2,15 @@
 # Casset
 
 Casset (C++ Asset management) allows for tracking, comparison, and analysis of portfolios of stocks and bonds.
+Casset currently fetches stock data using IEX api.
 
 ## How to use
-
-Clone this repository and build the target "Casset" with cmake 
-```cmake Casset```
-
-# Casset
+Once you have Casset (see below), build Casset.sln. This will open a command prompt which asks for your IEX key.
+Upon entering your IEX key, Casset will attend to get the latest Apple stock data.
 
 ## Getting Started
+Clone this repository and build the target "Casset" with cmake 
+```cmake Casset```
 
 ### Prerequisites
 Install [CMAKE](https://cmake.org/)
