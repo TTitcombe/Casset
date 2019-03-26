@@ -14,7 +14,7 @@ env: COMPILER=g++-7
 
 jobs:
   include:
-    - stage: "Compile"                # Run different code checking in parallel
+    - stage: "Compile"                # Run different code checking in parallel 
       name: "cpp Check"
       script:
        - sudo apt install python3-pip python3-setuptools xutils-dev
