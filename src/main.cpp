@@ -1,7 +1,9 @@
 #include <iostream>
 #include <map>
 #include <string>
+
 #include <cpr/cpr.h>
+#include <nlohmann/json.hpp>
 
 cpr::Response getChart(const std::string &symbol) {
   std::string url = "https://api.iextrading.com/1.0";
