@@ -19,10 +19,10 @@ jobs:
     - stage: "Compile"                # Run different code checking in parallel
       name: "cpp Check"
       script:
-       - "./build/travis_compile.sh"
+       - ./build/travis_compile.sh
        - cppcheck --quiet --force --error-exitcode=1 .
     - stage: "Test"                   # Run different OS tests in parallel
       name: "Ubuntu Unit Test"
       script:
-        - "./build/travis_compile.sh"
+        - ./build/travis_compile.sh
         - ./bin/UnitTests
