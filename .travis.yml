@@ -2,20 +2,19 @@
 dist: xenial
 language: cpp
 
-compiler: gcc
-addons:
- apt:
-  sources:
-   - ubuntu-toolchain-r-test
-   packages:
-    - g++-7
-    - cppcheck
-env: COMPILER=g++-7
-
 jobs:
   include:
-    - stage: "Compile"                # Run different code checking in parallel 
+    - stage: "Compile"                # Run different code checking in parallel
       name: "cpp Check"
+      compiler: gcc
+      addons:
+       apt:
+        sources:
+         - ubuntu-toolchain-r-test
+        packages:
+         - g++-7
+         - cppcheck
+      env: COMPILE=g++-7
       script:
        - sudo apt install python3-pip python3-setuptools xutils-dev
        - sudo pip3 install conan
@@ -30,6 +29,15 @@ jobs:
        - cppcheck --quiet --force --error-exitcode=1 .
     - stage: "Test"                   # Run different OS tests in parallel
       name: "Ubuntu Unit Test"
+      compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+            - cppcheck
+      env: COMPILE=g++-7
       script:
         - sudo apt install python3-pip python3-setuptools xutils-dev
         - sudo pip3 install conan
