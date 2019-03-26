@@ -19,10 +19,29 @@ jobs:
     - stage: "Compile"                # Run different code checking in parallel
       name: "cpp Check"
       script:
-       - ./build/travis_compile.sh
+       - sudo apt install python3-pip python3-setuptools xutils-dev
+       - sudo pip3 install conan
+       - conan user
+       - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
+       - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+       - mkdir -p ~/.conan/profiles
+       - cp travis/default ~/.conan/profiles/default
+       - mkdir build
+       - cd build
+       - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug .. && make
        - cppcheck --quiet --force --error-exitcode=1 .
     - stage: "Test"                   # Run different OS tests in parallel
       name: "Ubuntu Unit Test"
       script:
-        - ./build/travis_compile.sh
+        - sudo apt install python3-pip python3-setuptools xutils-dev
+        - sudo pip3 install conan
+        - conan user
+        - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
+        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        - mkdir -p ~/.conan/profiles
+        - cp travis/default ~/.conan/profiles/default
+        - mkdir build
+        - cd build
+        - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug .. && make
+        - cppcheck --quiet --force --error-exitcode=1 .
         - ./bin/UnitTests
