@@ -18,6 +18,7 @@ Install [Conan](https://conan.io/)
 Once you have installed [Conan](https://conan.io/), you need to add the following remotes using ```conan remote add x y``` where x is the local name for the remote and y is path to the remote:
 * zimmerk https://api.bintray.com/conan/zimmerk/conan
 * bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+* vthiery https://api.bintray.com/conan/vthiery/conan-packages
 
 ### Installing
 Clone this repository and build it with CMake (preferable in a directory outside your source)
