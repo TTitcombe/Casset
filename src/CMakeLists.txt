@@ -1,9 +1,13 @@
+add_subdirectory(API)
+
 set(SRC_FILES
   main.cpp
+  ${API_SRC_FILES}
   # add any additional source files here
 )
 
 set(HDR_FILES
+  ${API_HDR_FILES}
   # add any additional header files here
 )
 
