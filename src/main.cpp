@@ -24,7 +24,7 @@ int main(int argc, char **argv) {
 
     auto j3 = json::parse(r.text);
     const auto date = j3[0]["date"].get<std::string>();
-    fmt::print("Date: {}",  date);
+    fmt::print("Date: {}\n",  date);
 
   } else {
     fmt::print("GET not successful. Status code is {}. \n", r.status_code);
