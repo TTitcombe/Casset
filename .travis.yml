@@ -4,7 +4,7 @@ language: cpp
 
 jobs:
   include:
-    - stage: "Compile"                # Run different code checking in parallel
+    - stage: "Static Analysis"                # Run different code checking in parallel
       name: "cpp Check"
       compiler: gcc
       addons:
@@ -21,6 +21,7 @@ jobs:
        - conan user
        - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+       - conan remote add vthiery https://api.bintray.com/conan/vthiery/conan-packages
        - mkdir -p ~/.conan/profiles
        - cp travis/default ~/.conan/profiles/default
        - mkdir build
@@ -44,6 +45,7 @@ jobs:
         - conan user
         - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
         - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        - conan remote add vthiery https://api.bintray.com/conan/vthiery/conan-packages
         - mkdir -p ~/.conan/profiles
         - cp travis/default ~/.conan/profiles/default
         - mkdir build
