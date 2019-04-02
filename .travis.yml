@@ -2,9 +2,33 @@
 dist: xenial
 language: cpp
 
-matrix:
+jobs:
   include:
-    - compiler: gcc
+    - stage: "Stage"
+      name: "CPP check"
+      compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+            - cppcheck
+      env: COMPILER=g++-7
+      script:
+        - sudo apt install python3-pip python3-setuptools xutils-dev
+        - sudo pip3 install conan
+        - conan user
+        - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
+        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        - mkdir -p ~/.conan/profiles
+        - cp travis/default ~/.conan/profiles/default
+        - mkdir build
+        - cd build
+        - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug ..
+        - cppcheck --quiet --force --error-exitcode=1 .
+    - name: "Unit testing"
+      compiler: gcc
       addons:
         apt:
           sources:
@@ -12,16 +36,15 @@ matrix:
           packages:
             - g++-7
       env: COMPILER=g++-7
-
-script:
-  - sudo apt install python3-pip python3-setuptools xutils-dev
-  - sudo pip3 install conan
-  - conan user
-  - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
-  - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-  - mkdir -p ~/.conan/profiles
-  - cp travis/default ~/.conan/profiles/default
-  - mkdir build
-  - cd build
-  - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug .. && make
-  - ./bin/UnitTests
+      script:
+        - sudo apt install python3-pip python3-setuptools xutils-dev
+        - sudo pip3 install conan
+        - conan user
+        - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
+        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
+        - mkdir -p ~/.conan/profiles
+        - cp travis/default ~/.conan/profiles/default
+        - mkdir build
+        - cd build
+        - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug .. && make
+        - ./bin/UnitTests
