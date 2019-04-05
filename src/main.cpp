@@ -6,6 +6,11 @@
 
 int main(int argc, char **argv) {
   IEX iex;
-  const std::string date = iex.getChart("AAPL");
+
+  std::string symbol;
+  fmt::print("Enter a stock symbol to collect data for: \n");
+  std::cin >> symbol;
+
+  const std::string date = iex.getChart(symbol);
   fmt::print("Date is {}", date);
 }
