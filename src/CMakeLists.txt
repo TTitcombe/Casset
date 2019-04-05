@@ -1,12 +1,10 @@
 set(SRC_FILES
   main.cpp
-  IEX.cpp
-  # add any additional source files here
+  API/IEX.cpp
 )
 
 set(HDR_FILES
-  IEX.h
-  # add any additional header files here
+  API/IEX.h
 )
 
 add_executable(Casset ${SRC_FILES} ${HDR_FILES})

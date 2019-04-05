@@ -2,6 +2,8 @@
 
 #include <fmt/format.h>
 
+namespace API {
+
 cpr::Response IEX::makeGetRequest(const std::string endpoint, const bool verifySSL) {
   const std::string full_url = m_url + endpoint;
   fmt::print("Starting GET req at url {}. \n", full_url);
@@ -48,3 +50,4 @@ std::string IEX::getChart(const std::string symbol) {
   }
   return date;
 }
+} // API
