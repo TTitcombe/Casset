@@ -23,31 +23,34 @@ json IEX::parseGetRequest(const cpr::Response &response) {
   return j3;
 }
 
-bool IEX::isValidSymbol(const std::string symbol) {
-  const auto response = makeGetRequest("/ref-data/symbols", false);
+json IEX::getParsedJson(const std::string endpoint, const bool verifySSL) {
+  json parsed_json;
+  const auto response = makeGetRequest(endpoint, verifySSL);
   if (response.status_code == 200) {
-    const auto j = parseGetRequest(response);
-    for (const auto &j2 : j) {
-      const auto sym = j2["symbol"].get<std::string>();
-      if (sym == symbol) {
-        fmt::print("Found {}\n", symbol);
-        return true;
-      }
+    //fmt::print("{}", response.text);
+    parsed_json = parseGetRequest(response);
+  }
+  return parsed_json;
+}
+
+bool IEX::isValidSymbol(const std::string symbol) {
+  const auto j = getParsedJson("/ref-data/symbols");
+  for (const auto &j2 : j) {
+    const auto sym = j2["symbol"].get<std::string>();
+    if (sym == symbol) {
+      return true;
     }
   }
   fmt::print("Cannot find symbol {}.\n", symbol);
   return false;
 }
 
-std::string IEX::getChart(const std::string symbol) {
-  std::string date;
+json IEX::getChart(const std::string symbol) {
+  json chart;
   if (isValidSymbol(symbol)) {
-    const auto response = makeGetRequest("/stock/" + symbol + "/chart", false);
-    if (response.status_code == 200) {
-      const auto j3 = parseGetRequest(response);
-      date = j3[0]["date"].get<std::string>();
-    }
+    const auto j = getParsedJson("/stock/"+symbol+"/chart");
+    chart = j[j.size()-1];
   }
-  return date;
+  return chart;
 }
 } // API

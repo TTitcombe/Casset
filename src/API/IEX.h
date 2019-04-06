@@ -12,10 +12,11 @@ namespace API {
 
 class IEX {
 public:
-  std::string getChart(const std::string symbol);
+  json getChart(const std::string symbol);
+  json getParsedJson(const std::string endpoint, const bool verifySSL=false);
 
 private:
-  cpr::Response makeGetRequest(const std::string endpoint, const bool verifySSL);
+  cpr::Response makeGetRequest(const std::string endpoint, const bool verifySSL=false);
   json parseGetRequest(const cpr::Response &response);
   bool isValidSymbol(const std::string symbol);
   const std::string m_url = "https://api.iextrading.com/1.0";

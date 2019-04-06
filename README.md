@@ -4,16 +4,8 @@
 Casset (C++ Asset management) allows for tracking, comparison, and analysis of portfolios of stocks and bonds.
 Casset currently fetches stock data using IEX api.
 
-## How to use
-Once you have Casset (see below), build Casset.sln. This will open a command prompt which asks for a stock ticker.
-If you enter a valid ticker symbol (e.g. `AAPL`), currently this will return the date of the latest entry of data for 
-the company. More valuable information coming soon.
-
-*Note: The ticker symbols must be in upper case.*
 
 ## Getting Started
-Clone this repository and build the target "Casset" with cmake 
-```cmake Casset```
 
 ### Prerequisites
 Install [CMAKE](https://cmake.org/)
@@ -23,10 +15,17 @@ Once you have installed [Conan](https://conan.io/), you need to add the followin
 * bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 * vthiery https://api.bintray.com/conan/vthiery/conan-packages
 
-### Installing
-Clone this repository and build it with CMake (preferable in a directory outside your source)
-
 NOTE: Due to an issue in the current conan/cmake setup, Windows builds MUST be in Release for the time being.
+
+## Building
+Clone this repository and build in cmake.
+
+## How to use
+Once you have Casset, build Casset.sln. This will open a command prompt which asks for a stock ticker.
+Entering a valid ticker symbol (e.g. `AAPL`) will print out the most recent data associated with that company, including
+open, high, close prices, and the date to which the data pertains.
+
+*Note: The ticker symbols must be in upper case.*
 
 ## Running the tests
 
