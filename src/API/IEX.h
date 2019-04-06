@@ -12,7 +12,7 @@ namespace API {
 
 class IEX {
 public:
-  std::string getChart(const std::string symbol);
+  json getChart(const std::string symbol);
   json getParsedJson(const std::string endpoint, const bool verifySSL=false);
 
 private:

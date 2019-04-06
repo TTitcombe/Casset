@@ -10,6 +10,6 @@ int main(int argc, char **argv) {
   fmt::print("Enter a stock symbol to collect data for: \n");
   std::cin >> symbol;
 
-  const std::string chart = iex.getChart(symbol);
-  fmt::print("Open is {}", chart);
+  const json chart = iex.getChart(symbol);
+  fmt::print("Chart is {}", chart.dump());
 }

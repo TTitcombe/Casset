@@ -45,11 +45,11 @@ bool IEX::isValidSymbol(const std::string symbol) {
   return false;
 }
 
-std::string IEX::getChart(const std::string symbol) {
-  std::string chart;
+json IEX::getChart(const std::string symbol) {
+  json chart;
   if (isValidSymbol(symbol)) {
     const auto j = getParsedJson("/stock/"+symbol+"/chart");
-    chart = j[0].dump();
+    chart = j[j.size()-1];
   }
   return chart;
 }
