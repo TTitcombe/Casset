@@ -27,6 +27,7 @@ json IEX::getParsedJson(const std::string endpoint, const bool verifySSL) {
   json parsed_json;
   const auto response = makeGetRequest(endpoint, verifySSL);
   if (response.status_code == 200) {
+    //fmt::print("{}", response.text);
     parsed_json = parseGetRequest(response);
   }
   return parsed_json;
@@ -37,7 +38,6 @@ bool IEX::isValidSymbol(const std::string symbol) {
   for (const auto &j2 : j) {
     const auto sym = j2["symbol"].get<std::string>();
     if (sym == symbol) {
-      fmt::print("Found {}\n", symbol);
       return true;
     }
   }
@@ -46,11 +46,11 @@ bool IEX::isValidSymbol(const std::string symbol) {
 }
 
 std::string IEX::getChart(const std::string symbol) {
-  std::string date;
+  std::string chart;
   if (isValidSymbol(symbol)) {
     const auto j = getParsedJson("/stock/"+symbol+"/chart");
-    date = j[0]["date"].get<std::string>();
+    chart = j[0].dump();
   }
-  return date;
+  return chart;
 }
 } // API
