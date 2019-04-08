@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/TTitcombe/Casset.svg?branch=master)](https://travis-ci.com/TTitcombe/Casset)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/TTitcombe/Casset.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/TTitcombe/Casset/alerts/)
 # Casset
 
 Casset (C++ Asset management) allows for tracking, comparison, and analysis of portfolios of stocks and bonds.
