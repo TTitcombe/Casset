@@ -27,7 +27,6 @@ json IEX::getParsedJson(const std::string endpoint, const bool verifySSL) {
   json parsed_json;
   const auto response = makeGetRequest(endpoint, verifySSL);
   if (response.status_code == 200) {
-    //fmt::print("{}", response.text);
     parsed_json = parseGetRequest(response);
   }
   return parsed_json;
