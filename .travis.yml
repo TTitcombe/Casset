@@ -51,5 +51,4 @@ jobs:
         - mkdir build
         - cd build
         - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug .. && make
-        - cppcheck --quiet --force --error-exitcode=1 .
         - ./bin/UnitTests
