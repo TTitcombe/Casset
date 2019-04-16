@@ -14,7 +14,7 @@ SCENARIO("JSON objects can be searched for a user-provided company ticker", "[AP
     IEX_Mock iex_mock;
 
     GIVEN("An array containing a single JSON object") {
-        json json_mock = json::parse("[{\"symbol\": \"CORRECT_TOKEN\"}]");
+        json json_mock = json::parse(R"([{"symbol": "CORRECT_TOKEN"}])");
         WHEN("We search for the ticker symbol present in the JSON object") {
             REQUIRE_CALL(iex_mock, getParsedJson("/ref-data/symbols", false))
               .RETURN(json_mock);
@@ -26,7 +26,7 @@ SCENARIO("JSON objects can be searched for a user-provided company ticker", "[AP
         }
     }
     GIVEN("An array containing multiple JSON objects") {
-        json json_mock = json::parse("[{\"symbol\": \"A_TOKEN\"}, {\"symbol\": \"CORRECT_TOKEN\"}, {\"symbol\": \"A_THIRD_TOKEN\"}]");
+        json json_mock = json::parse(R"([{"symbol": "A_TOKEN"}, {"symbol": "CORRECT_TOKEN"}, {"symbol": "A_THIRD_TOKEN"}])");
         WHEN("We search for a ticker symbol present in one of the JSON objects") {
             REQUIRE_CALL(iex_mock, getParsedJson("/ref-data/symbols", false))
               .RETURN(json_mock);
