@@ -4,6 +4,8 @@
 #include <string>
 
 #include <cpr/cpr.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
+#include <spdlog/spdlog.h>
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
@@ -22,6 +24,7 @@ private:
                                const bool verifySSL);
   json parseGetRequest(const cpr::Response &response);
   const std::string m_url = "https://api.iextrading.com/1.0";
+  std::shared_ptr<spdlog::logger> m_logger = spdlog::stderr_color_mt("IEX_LOG");
 };
 } // namespace API
 #endif // API_IEX_H_
