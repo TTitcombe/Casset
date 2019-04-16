@@ -4,7 +4,7 @@
 
 namespace API {
 
-cpr::Response IEX::makeGetRequest(const std::string endpoint, const bool verifySSL) {
+cpr::Response IEX::makeGetRequest(const std::string &endpoint, const bool verifySSL) {
   const std::string full_url = m_url + endpoint;
   fmt::print("Starting GET req at url {}. \n", full_url);
   const auto response = cpr::Get(cpr::Url{full_url}, cpr::VerifySsl{verifySSL});
@@ -23,7 +23,7 @@ json IEX::parseGetRequest(const cpr::Response &response) {
   return j3;
 }
 
-json IEX::getParsedJson(const std::string endpoint, const bool verifySSL) {
+json IEX::getParsedJson(const std::string &endpoint, const bool verifySSL) {
   json parsed_json;
   const auto response = makeGetRequest(endpoint, verifySSL);
   if (response.status_code == 200) {
@@ -32,7 +32,7 @@ json IEX::getParsedJson(const std::string endpoint, const bool verifySSL) {
   return parsed_json;
 }
 
-bool IEX::isValidSymbol(const std::string symbol) {
+bool IEX::isValidSymbol(const std::string &symbol) {
   const auto j = getParsedJson("/ref-data/symbols");
   for (const auto &j2 : j) {
     const auto sym = j2["symbol"].get<std::string>();
@@ -44,7 +44,7 @@ bool IEX::isValidSymbol(const std::string symbol) {
   return false;
 }
 
-json IEX::getChart(const std::string symbol) {
+json IEX::getChart(const std::string &symbol) {
   json chart;
   if (isValidSymbol(symbol)) {
     const auto j = getParsedJson("/stock/"+symbol+"/chart");
