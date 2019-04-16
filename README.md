@@ -50,6 +50,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Tom Titcombe** - *Initial work* - [TTitcombe](https://github.com/TTitcombe)
+* **Matthew Jones** - *Initial work and project guidance* - [matthew-d-jones](https://github.com/matthew-d-jones)
 
 ## License
 
@@ -57,6 +58,4 @@ This project is licensed under the BSD 2-Clause License - see the [LICENSE.md](L
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Thank you to Matthew Jones for mentoring throughout this project
