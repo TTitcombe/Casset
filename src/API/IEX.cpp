@@ -4,7 +4,8 @@
 
 namespace API {
 
-cpr::Response IEX::makeGetRequest(const std::string &endpoint, const bool verifySSL) {
+cpr::Response IEX::makeGetRequest(const std::string &endpoint,
+                                  const bool verifySSL) {
   const std::string full_url = m_url + endpoint;
   fmt::print("Starting GET req at url {}. \n", full_url);
   const auto response = cpr::Get(cpr::Url{full_url}, cpr::VerifySsl{verifySSL});
@@ -47,9 +48,9 @@ bool IEX::isValidSymbol(const std::string &symbol) {
 json IEX::getChart(const std::string &symbol) {
   json chart;
   if (isValidSymbol(symbol)) {
-    const auto j = getParsedJson("/stock/"+symbol+"/chart");
-    chart = j[j.size()-1];
+    const auto j = getParsedJson("/stock/" + symbol + "/chart");
+    chart = j[j.size() - 1];
   }
   return chart;
 }
-} // API
+} // namespace API
