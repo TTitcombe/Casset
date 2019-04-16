@@ -5,7 +5,7 @@ language: cpp
 jobs:
   include:
     - stage: "Static Analysis"                # Run different code checking in parallel
-      name: "cpp Check"
+      name: "cppcheck"
       compiler: gcc
       addons:
        apt:
@@ -28,7 +28,7 @@ jobs:
        - cd build
        - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug ..
        - cppcheck --quiet --force --error-exitcode=1 .
-    - name: "Clang format"
+    - name: "clang format"
       compiler: gcc
       addons:
         apt:
@@ -51,7 +51,7 @@ jobs:
         - mkdir build
         - cd build
         - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug ..
-        - "./travis/clang_format.sh"
+        - "../travis/clang_format.sh"
     - stage: "Test"                   # Run different OS tests in parallel
       name: "Ubuntu Unit Test"
       compiler: gcc
