@@ -3,8 +3,11 @@
 namespace API {
 
 IEX::IEX() {
-    auto sink = std::make_shared<spdlog::sinks::stdout_sink_mt>();
-    m_logger = std::make_shared<spdlog::logger>("IEX_Log", sink);
+    try {
+        m_logger = spdlog::stderr_color_mt("IEX_LOG");
+    } catch (spdlog::spdlog_ex) {
+        m_logger = spdlog::get("IEX_LOG");
+    }
 }
 
 cpr::Response IEX::makeGetRequest(const std::string &endpoint,

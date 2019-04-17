@@ -5,7 +5,7 @@
 
 int main(int argc, char **argv) {
     std::string symbol = "AAPL";
-    std::string spdlog_level = "debug";
+    std::string spdlog_level = "info";
 
     auto Logger = spdlog::stderr_color_mt("MAIN_LOG");
 
