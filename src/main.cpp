@@ -5,11 +5,11 @@
 
 int main(int argc, char **argv) {
     std::string symbol = "AAPL";
-    std::string spdlog_level = "info";
+    std::string spdlog_level = "debug";
 
     auto Logger = spdlog::stderr_color_mt("MAIN_LOG");
 
-    CLI::App App{""};
+    CLI::App App{"Casset"};
     App.add_option("-s, --symbol", symbol,
                    "A stock ticker symbol");
     App.add_option("-l, --loglevel", spdlog_level,

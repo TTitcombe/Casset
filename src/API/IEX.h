@@ -14,6 +14,7 @@ namespace API {
 
 class IEX {
 public:
+  IEX();
   json getChart(const std::string &symbol);
   virtual json getParsedJson(const std::string &endpoint,
                              const bool verifySSL = false);
@@ -24,7 +25,7 @@ private:
                                const bool verifySSL);
   json parseGetRequest(const cpr::Response &response);
   const std::string m_url = "https://api.iextrading.com/1.0";
-  std::shared_ptr<spdlog::logger> m_logger = spdlog::stderr_color_mt("IEX_LOG");
+  std::shared_ptr<spdlog::logger> m_logger;
 };
 } // namespace API
 #endif // API_IEX_H_
