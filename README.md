@@ -15,6 +15,7 @@ Once you have installed [Conan](https://conan.io/), you need to add the followin
 * zimmerk https://api.bintray.com/conan/zimmerk/conan
 * bincrafters https://api.bintray.com/conan/bincrafters/public-conan
 * vthiery https://api.bintray.com/conan/vthiery/conan-packages
+* cli11 https://api.bintray.com/conan/cliutils/CLI11
 
 NOTE: Due to an issue in the current conan/cmake setup, Windows builds MUST be in Release for the time being.
 
@@ -22,8 +23,12 @@ NOTE: Due to an issue in the current conan/cmake setup, Windows builds MUST be i
 Clone this repository and build in cmake.
 
 ## How to use
-Once you have Casset, build Casset.sln. This will open a command prompt which asks for a stock ticker.
-Entering a valid ticker symbol (e.g. `AAPL`) will print out the most recent data associated with that company, including
+Once you have Casset, build Casset.sln.
+You can run the compiled Casset with the command following command line arguments:
+* **-s** or **--symbol**. A stock ticker symbol for which data will be retrieved. Default is "AAPL".
+* **-l** or **--loglevel**. A string describing the logging level. Default is "info".
+
+Running Casset with a valid ticker symbol (e.g. `AAPL`) will print out the most recent data associated with that company, including
 open, high, close prices, and the date to which the data pertains.
 
 *Note: The ticker symbols must be in upper case.*

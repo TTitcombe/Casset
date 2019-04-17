@@ -33,3 +33,5 @@ bin*
 *.cbp
 *.idea
 *cmake-build-debug
+
+.vs/

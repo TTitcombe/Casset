@@ -10,4 +10,5 @@ set(HDR_FILES
 add_executable(Casset ${SRC_FILES} ${HDR_FILES})
 target_link_libraries(Casset CONAN_PKG::cpr
                              CONAN_PKG::jsonformoderncpp
-                             CONAN_PKG::fmt)
+                             CONAN_PKG::CLI11
+                             CONAN_PKG::spdlog)
