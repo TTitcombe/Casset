@@ -2,7 +2,10 @@
 
 namespace API {
 
-IEX::IEX() : m_logger(std::make_shared<spdlog::stderr_color_mt>("IEX_LOG")) {}
+IEX::IEX() {
+    auto sink = std::make_shared<spdlog::sinks::stdout_sink_mt>();
+    m_logger = std::make_shared<spdlog::logger>("IEX_Log", sink);
+}
 
 cpr::Response IEX::makeGetRequest(const std::string &endpoint,
                                   const bool verifySSL) {
