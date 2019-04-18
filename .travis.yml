@@ -17,14 +17,7 @@ jobs:
       env: COMPILER=g++-7
       script:
        - sudo apt install python3-pip python3-setuptools xutils-dev
-       - sudo pip3 install conan
-       - conan user
-       - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
-       - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-       - conan remote add vthiery https://api.bintray.com/conan/vthiery/conan-packages
-       - conan remote add cli11 https://api.bintray.com/conan/cliutils/CLI11
-       - mkdir -p ~/.conan/profiles
-       - cp travis/default ~/.conan/profiles/default
+       - "travis/linux_conan.sh"
        - mkdir build
        - cd build
        - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug ..
@@ -42,14 +35,7 @@ jobs:
       env: COMPILER=g++-7
       script:
         - sudo apt install python3-pip python3-setuptools xutils-dev
-        - sudo pip3 install conan
-        - conan user
-        - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
-        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-        - conan remote add vthiery https://api.bintray.com/conan/vthiery/conan-packages
-        - conan remote add cli11 https://api.bintray.com/conan/cliutils/CLI11
-        - mkdir -p ~/.conan/profiles
-        - cp travis/default ~/.conan/profiles/default
+        - "travis/linux_conan.sh"
         - mkdir build
         - cd build
         - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug ..
@@ -67,14 +53,7 @@ jobs:
       env: COMPILER=g++-7
       script:
         - sudo apt install python3-pip python3-setuptools xutils-dev
-        - sudo pip3 install conan
-        - conan user
-        - conan remote add zimmerk https://api.bintray.com/conan/zimmerk/conan
-        - conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan
-        - conan remote add vthiery https://api.bintray.com/conan/vthiery/conan-packages
-        - conan remote add cli11 https://api.bintray.com/conan/cliutils/CLI11
-        - mkdir -p ~/.conan/profiles
-        - cp travis/default ~/.conan/profiles/default
+        - "travis/linux_conan.sh"
         - mkdir build
         - cd build
         - cmake -DCMAKE_CXX_COMPILER=$COMPILER -DCMAKE_BUILD_TYPE=Debug .. && make
