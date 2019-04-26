@@ -1,10 +1,14 @@
 set(SRC_FILES
   main.cpp
   API/IEX.cpp
+  UI/src/presenter.cpp
+  UI/src/mainwindow.cpp
 )
 
 set(HDR_FILES
   API/IEX.h
+  UI/hdr/presenter.h
+  UI/hdr/mainwindow.h
 )
 
 find_package(Qt5Core CONFIG REQUIRED)
