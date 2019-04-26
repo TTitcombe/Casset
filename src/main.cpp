@@ -20,13 +20,6 @@ void setLogLevel(const std::string &level) {
 }
 
 int main(int argc, char **argv) {
-    QApplication app(argc, argv);
-
-    MainWindow *casset_window = new MainWindow();
-    Presenter presenter(casset_window);
-    casset_window->show();
-    return app.exec();
-    /*
     auto Logger = spdlog::stderr_color_mt("MAIN_LOG");
 
     // Set default CLI arguments
@@ -45,7 +38,10 @@ int main(int argc, char **argv) {
     // Set the log level
     setLogLevel(spdlog_level);
 
-    API::IEX iex;
-    const json chart = iex.getChart(symbol);
-    Logger->info("Chart is {}", chart.dump());*/
+    QApplication app(argc, argv);
+
+    UI::MainWindow *casset_window = new UI::MainWindow();
+    UI::Presenter presenter(casset_window);
+    casset_window->show();
+    return app.exec();
 }

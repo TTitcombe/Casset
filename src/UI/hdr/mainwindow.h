@@ -3,14 +3,17 @@
 
 #include <QMainWindow>
 
-class MainWindow : public QMainWindow
-{
+namespace UI {
+class MainWindow : public QMainWindow {
     Q_OBJECT
 public:
     explicit MainWindow();
 
     signals:
-      void ViewButtonClicked();
+            void
+
+    ViewButtonClicked();
 
 };
+} // UI
 #endif // UI_MAINWINDOW_H_

@@ -5,16 +5,17 @@
 
 #include "../hdr/mainwindow.h"
 
+namespace UI {
 MainWindow::MainWindow() :
-        QMainWindow()
-{
+        QMainWindow() {
     setWindowTitle("Casset");
-    QWidget * wdg = new QWidget(this);
+    QWidget *wdg = new QWidget(this);
     QVBoxLayout *vlay = new QVBoxLayout(wdg);
-    QPushButton *button = new QPushButton("Say Hello");
+    QPushButton *button = new QPushButton("Get AAPL");
     vlay->addWidget(button);
     wdg->setLayout(vlay);
     setCentralWidget(wdg);
 
-    QObject::connect(button,SIGNAL(clicked()),this,SIGNAL(ViewButtonClicked()));
+    QObject::connect(button, SIGNAL(clicked()), this, SIGNAL(ViewButtonClicked()));
 }
+} // UI
