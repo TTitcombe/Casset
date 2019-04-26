@@ -9,6 +9,7 @@ set(HDR_FILES
   API/IEX.h
   UI/hdr/presenter.h
   UI/hdr/mainwindow.h
+  UI/hdr/mainwindow.ui
 )
 
 find_package(Qt5Core CONFIG REQUIRED)

@@ -3,16 +3,23 @@
 
 #include <QMainWindow>
 
+namespace Ui {
+    class MainWindow;
+}
+
 namespace UI {
-class MainWindow : public QMainWindow {
+class MainWindow : public QMainWindow
+{
     Q_OBJECT
 public:
-    explicit MainWindow();
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
+    void updateStockMessage(const std::string &message);
 
     signals:
-            void
-
-    ViewButtonClicked();
+            void ViewButtonClicked();
+private:
+    ::Ui::MainWindow *m_ui;
 
 };
 } // UI

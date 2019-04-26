@@ -1,7 +1,9 @@
 #include "../hdr/mainwindow.h"
 #include "../hdr/presenter.h"
 
-#include <iostream>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
 
 namespace UI {
 Presenter::Presenter(MainWindow *v) : m_view(v) {
@@ -15,6 +17,12 @@ Presenter::Presenter(MainWindow *v) : m_view(v) {
 
 void Presenter::onViewButtonClicked() {
     const json chart = m_iex.getChart("AAPL");
-    m_logger->info("Chart is {}", chart.dump());
+    std::string message;
+    try {
+        message = "Close: " + std::to_string(static_cast<long double>(chart["close"]));
+    } catch(json::exception) {
+        message = "Error fetching data";
+    }
+    m_view->updateStockMessage(message);
 }
 } // UI
