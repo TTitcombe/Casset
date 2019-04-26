@@ -3,10 +3,16 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
 
-#include <QCoreApplication>
+#include <QApplication>
+#include <QPushButton>
 
 int main(int argc, char **argv) {
-    QCoreApplication app (argc, argv);
+    QApplication app(argc, argv);
+
+    QPushButton hello("Hello world!");
+    hello.resize(100, 30);
+
+    hello.show();
     return app.exec();
     /*
     std::string symbol = "AAPL";

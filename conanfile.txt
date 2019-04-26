@@ -13,3 +13,8 @@ cmake
 
 [options]
 cpr:use_openssl=False
+
+[imports]
+bin, *.dll -> ./bin
+bin, *.conf -> ./bin
+plugins, * -> ./plugins
