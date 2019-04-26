@@ -3,7 +3,12 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
 
+#include <QCoreApplication>
+
 int main(int argc, char **argv) {
+    QCoreApplication app (argc, argv);
+    return app.exec();
+    /*
     std::string symbol = "AAPL";
     std::string spdlog_level = "info";
 
@@ -29,5 +34,5 @@ int main(int argc, char **argv) {
 
     API::IEX iex;
     const json chart = iex.getChart(symbol);
-    Logger->info("Chart is {}", chart.dump());
+    Logger->info("Chart is {}", chart.dump());*/
 }
