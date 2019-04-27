@@ -26,10 +26,3 @@
 - [ ] Do the changes function as described and is it robust?
 
 ---
-
-## Nominate for Group Code Review (Anyone can nominate it)
-Indicate if you think the code should be reviewed in a Thursday code review session.
-
-- [ ] Recommend for group code review
-
-Also, nominate it on the code_review Slack channel (does someone want to automate this?).
