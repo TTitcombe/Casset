@@ -3,7 +3,7 @@
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
 
-#include "API/IEX.h"
+#include "API/hdr/IEX.h"
 #include "UI/hdr/mainwindow.h"
 #include "UI/hdr/presenter.h"
 

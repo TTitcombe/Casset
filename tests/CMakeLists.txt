@@ -4,11 +4,11 @@
 
 set(SRC_TEST_FILES
         API/IEXTest.cpp
-        ../src/API/IEX.cpp
+        ../src/API/src/IEX.cpp
 )
 
 set(HDR_TEST_FILES
-        ../src/API/IEX.h)
+        ../src/API/hdr/IEX.h)
 
 add_executable(UnitTests ${SRC_TEST_FILES} ${HDR_TEST_FILES})
 target_link_libraries(UnitTests CONAN_PKG::catch2
