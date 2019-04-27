@@ -21,7 +21,7 @@ std::string StockInfo::getSymbol() const {
 }
 
 std::string StockInfo::getStockReport() const {
-  const std::string report = fmt::format("{} closed on {} at {}", m_symbol, m_date, m_close);
+  const std::string report = fmt::format("{} closed on {} at {:.2f}", m_symbol, m_date, m_close);
   return report;
 }
 
