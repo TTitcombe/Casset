@@ -2,7 +2,7 @@
 #include <catch2/catch.hpp>
 #include <catch2/trompeloeil.hpp>
 
-#include "../../src/API/IEX.h"
+#include "../../src/API/hdr/IEX.h"
 
 class IEX_Mock : public API::IEX {
 public:
