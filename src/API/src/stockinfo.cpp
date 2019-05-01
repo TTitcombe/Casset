@@ -2,13 +2,13 @@
 
 #include "../hdr/stockinfo.h"
 
-StockInfo::StockInfo(const json &stockChart) {
+StockInfo::StockInfo(const std::string &symbol, const json &stockChart) {
   m_open = extractFromJson<float>("open", stockChart);
   m_close = extractFromJson<float>("close", stockChart);
   m_low = extractFromJson<float>("low", stockChart);
   m_high = extractFromJson<float>("high", stockChart);
   m_date = extractFromJson<std::string>("date", stockChart);
-  m_symbol = "AAPL";
+  m_symbol = symbol;
 }
 
 StockInfo::StockInfo(const std::string &symbol, const std::string &date,

@@ -8,7 +8,7 @@ SCENARIO("StockInfo objects can store useful information on a stock.") {
   GIVEN("A chart containing all relevant stock information") {
     json chart = json::parse(R"({"symbol": "AAPL", "close": 210.0, "date": "2019-01-01"})");
     WHEN("We initialise a StockInfo object with the chart") {
-      StockInfo stock(chart);
+      StockInfo stock("AAPL", chart);
       THEN("StockInfo should extract the symbol and close") {
         REQUIRE(stock.getSymbol() == "AAPL");
         REQUIRE(stock.getClose() == 210.0);

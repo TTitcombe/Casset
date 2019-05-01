@@ -1,8 +1,9 @@
-#include <nlohmann/json.hpp>
-
 #include "../hdr/presenter.h"
 #include "../../API/hdr/stockinfo.h"
 
+#include <algorithm>
+#include <fmt/format.h>
+#include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
 
@@ -17,9 +18,21 @@ Presenter::Presenter(MainWindow *v) : m_view(v) {
 }
 
 void Presenter::onViewButtonClicked() {
-  const std::string symbol = m_view->getSymbol();
-  const json chart = m_iex.getChart(symbol);
-  StockInfo stock(chart);
-  m_view->updateStockMessage(stock.getStockReport());
+  std::string symbol = m_view->getSymbol();
+  if (symbol.length() > 4) {
+    const std::string message = fmt::format("{} is too long for a stock symbol", symbol);
+    m_view->updateStockMessage(message);
+    return;
+  }
+  // Stock symbols are uppercase
+  std::transform(symbol.begin(), symbol.end(),symbol.begin(), ::toupper);
+  if (m_iex.isValidSymbol(symbol)) {
+    const json chart = m_iex.getChart(symbol);
+    StockInfo stock(symbol, chart);
+    m_view->updateStockMessage(stock.getStockReport());
+  } else {
+    const std::string message = fmt::format("{} was not a recognised stock symbol", symbol);
+    m_view->updateStockMessage(message);
+  }
 }
 } // UI
