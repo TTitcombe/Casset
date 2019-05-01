@@ -19,6 +19,10 @@ MainWindow::~MainWindow() {
     delete m_ui;
 }
 
+std::string MainWindow::getSymbol() const {
+  return m_ui->symbolLineEdit->text().toStdString();
+}
+
 void MainWindow::updateStockMessage(const std::string &message) {
     m_ui->stockInfoLabel->setText(QString::fromStdString(message));
 }

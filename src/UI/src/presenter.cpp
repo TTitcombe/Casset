@@ -17,7 +17,8 @@ Presenter::Presenter(MainWindow *v) : m_view(v) {
 }
 
 void Presenter::onViewButtonClicked() {
-  const json chart = m_iex.getChart("AAPL");
+  const std::string symbol = m_view->getSymbol();
+  const json chart = m_iex.getChart(symbol);
   StockInfo stock(chart);
   m_view->updateStockMessage(stock.getStockReport());
 }
