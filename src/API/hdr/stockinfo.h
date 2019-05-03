@@ -6,7 +6,7 @@ using json = nlohmann::json;
 
 class StockInfo {
 public:
-  StockInfo(const json &stockChart);
+  StockInfo(const std::string &symbol, const json &stockChart);
   StockInfo(const std::string &symbol, const std::string &date,
             const float close);
   std::string getSymbol() const;

@@ -1,6 +1,7 @@
 #ifndef UI_MAINWINDOW_H_
 #define UI_MAINWINDOW_H_
 
+#include <string>
 #include <QMainWindow>
 
 namespace Ui {
@@ -15,6 +16,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void updateStockMessage(const std::string &message);
+    std::string getSymbol() const;
 
     signals:
             void ViewButtonClicked();
