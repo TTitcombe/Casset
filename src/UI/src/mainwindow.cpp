@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
         QMainWindow(parent), m_ui(new ::Ui::MainWindow)
 {
         m_ui->setupUi(this);
+        this->setWindowTitle("Casset");
 
         QObject::connect(m_ui->stockButton, SIGNAL(clicked()), this, SIGNAL(ViewButtonClicked()));
 }
