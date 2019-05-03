@@ -19,7 +19,7 @@ jobs:
        - "travis/linux_conan.sh"
        - mkdir build
        - cd build
-       - cmake -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_BUILD_TYPE=Debug ..
+       - cmake -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_BUILD_TYPE=Debug ..
        - cppcheck --quiet --force --error-exitcode=1 .
     - name: "clang format"
       compiler: gcc
@@ -36,7 +36,7 @@ jobs:
         - "travis/linux_conan.sh"
         - mkdir build
         - cd build
-        - cmake -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_BUILD_TYPE=Debug ..
+        - cmake -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_BUILD_TYPE=Debug ..
         - "../travis/clang_format.sh"
     - stage: "Test"                   # Run different OS tests in parallel
       name: "Ubuntu Unit Test"
@@ -53,5 +53,5 @@ jobs:
         - "travis/linux_conan.sh"
         - mkdir build
         - cd build
-        - cmake -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_BUILD_TYPE=Debug .. && make
+        - cmake -DCMAKE_CXX_COMPILER=g++-7 -DCMAKE_C_COMPILER=gcc-7 -DCMAKE_BUILD_TYPE=Debug .. && make
         - ./bin/UnitTests
