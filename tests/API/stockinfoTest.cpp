@@ -14,7 +14,7 @@ SCENARIO("StockInfo objects can store useful information on a stock.") {
         REQUIRE(stock.getClose() == 210.0);
       }
       THEN("StockInfo should create a stock report") {
-        const std::string expected = "AAPL closed on 2019-01-01 at 210.00";
+        const std::string expected = "AAPL closed on 2019-01-01 at $210.00";
         const std::string actual = stock.getStockReport();
         REQUIRE(actual == expected);
       }
@@ -26,7 +26,7 @@ SCENARIO("StockInfo objects can store useful information on a stock.") {
         REQUIRE(stock.getClose() == 210.0);
       }
       THEN("StockInfo should create a stock report") {
-        const std::string expected = "AAPL closed on 2019-01-01 at 210.00";
+        const std::string expected = "AAPL closed on 2019-01-01 at $210.00";
         const std::string actual = stock.getStockReport();
         REQUIRE(actual == expected);
       }
