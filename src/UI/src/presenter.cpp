@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <fmt/format.h>
 #include <nlohmann/json.hpp>
+#include <regex>
+
 
 using json = nlohmann::json;
 
@@ -19,8 +21,16 @@ Presenter::Presenter(MainWindow *v) : m_view(v) {
 
 void Presenter::onViewButtonClicked() {
   std::string symbol = m_view->getSymbol();
+  // Stock symbols can only be 4 characters at most
   if (symbol.length() > 4) {
     const std::string message = fmt::format("{} is too long for a stock symbol", symbol);
+    m_view->updateStockMessage(message);
+    return;
+  }
+
+  // Stock symbols contain alphabetical characters only
+  if (!std::regex_match(symbol, std::regex("^[A-Za-z]+$"))) {
+    const std::string message = fmt::format("{} contains not alphabetical characters", symbol);
     m_view->updateStockMessage(message);
     return;
   }
