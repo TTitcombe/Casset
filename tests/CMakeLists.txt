@@ -7,11 +7,14 @@ set(SRC_TEST_FILES
         ../src/API/src/IEX.cpp
         API/stockinfoTest.cpp
         ../src/API/src/stockinfo.cpp
+        API/portfolioTest.cpp
+        ../src/API/src/portfolio.cpp
 )
 
 set(HDR_TEST_FILES
         ../src/API/hdr/IEX.h
         ../src/API/hdr/stockinfo.h
+        ../src/API/hdr/portfolio.h
 )
 
 add_executable(UnitTests ${SRC_TEST_FILES} ${HDR_TEST_FILES})

@@ -2,6 +2,7 @@ set(SRC_FILES
   main.cpp
   API/src/IEX.cpp
   API/src/stockinfo.cpp
+  API/src/portfolio.cpp
   UI/src/presenter.cpp
   UI/src/mainwindow.cpp
 )
@@ -9,6 +10,7 @@ set(SRC_FILES
 set(HDR_FILES
   API/hdr/IEX.h
   API/hdr/stockinfo.h
+  API/hdr/portfolio.h
   UI/hdr/presenter.h
   UI/hdr/mainwindow.h
   UI/hdr/mainwindow.ui

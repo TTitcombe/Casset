@@ -4,6 +4,8 @@
 
 using json = nlohmann::json;
 
+enum class Currency {usd};
+
 class StockInfo {
 public:
   StockInfo(const std::string &symbol, const json &stockChart);
@@ -17,6 +19,7 @@ private:
   float m_close;
   float m_low;
   float m_high;
+  Currency m_currency = Currency::usd;
   std::string m_date;
   std::string m_symbol;
   template <class T>
