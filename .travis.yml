@@ -37,7 +37,7 @@ jobs:
             - clang-format-5.0
       script:
         - sudo apt install python3-pip python3-setuptools xutils-dev
-        - "../travis/clang_format.sh"
+        - "travis/clang_format.sh"
     - stage: "Test"                   # Run different OS tests in parallel
       name: "Ubuntu Unit Test"
       compiler: gcc
