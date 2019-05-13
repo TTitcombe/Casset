@@ -14,6 +14,15 @@ public:
   std::string getSymbol() const;
   std::string getStockReport() const;
   float getClose() const;
+
+  bool operator ==(const StockInfo &s) const {
+    if (m_symbol != s.getSymbol()) {
+      return false;
+    } else {
+      return m_close == s.getClose();
+    }
+  }
+
 private:
   float m_open;
   float m_close;

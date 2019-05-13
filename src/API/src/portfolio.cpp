@@ -4,23 +4,33 @@ Portfolio::Portfolio() {
 }
 
 void Portfolio::addStock(const int numberOfShares, const StockInfo stock) {
+  if (numberOfShares <= 0) {
+    throw std::invalid_argument("You can only hold a positive, non-zero number of shares");
+  }
+
   const std::string stockSymbol = stock.getSymbol();
-  if (m_stocks.find(stockSymbol) == m_stocks.end()) {
+  if (!hasStock(stockSymbol)) {
     m_value += numberOfShares * stock.getClose();
-    m_stocks.insert(std::pair<std::string, int>(stockSymbol,numberOfShares));
+    m_stocks.insert({stockSymbol, numberOfShares});
   }
   else {
-    throw std::invalid_argument("This portfolio already contains the stock.");
+    throw std::invalid_argument(fmt::format("This portfolio already contains {}.", stockSymbol));
   }
 }
 
 void Portfolio::removeStock(const std::string &stockSymbol) {
-  if (m_stocks.find(stockSymbol) != m_stocks.end()) {
+  if (hasStock(stockSymbol)) {
     //PortfolioPair stock = m_stocks[stockSymbol];
     int valueToRemove = m_stocks[stockSymbol];
     m_value -= valueToRemove;
     m_stocks.erase(stockSymbol);
+  } else {
+    throw std::invalid_argument(fmt::format("This portfolio does not contain {}", stockSymbol));
   }
+}
+
+bool Portfolio::hasStock(const std::string &stockSymbol) const {
+  return (m_stocks.find(stockSymbol) != m_stocks.end());
 }
 
 void Portfolio::rename(const std::string &name) {
