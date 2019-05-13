@@ -1,4 +1,4 @@
-#include "IEX.h"
+#include "../hdr/IEX.h"
 
 namespace API {
 
@@ -53,10 +53,8 @@ bool IEX::isValidSymbol(const std::string &symbol) {
 
 json IEX::getChart(const std::string &symbol) {
   json chart;
-  if (isValidSymbol(symbol)) {
-    const auto j = getParsedJson("/stock/" + symbol + "/chart");
-    chart = j[j.size() - 1];
-  }
+  const auto j = getParsedJson("/stock/" + symbol + "/chart");
+  chart = j[j.size() - 1];
   return chart;
 }
 } // namespace API

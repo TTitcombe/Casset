@@ -13,3 +13,7 @@ conan remote add cli11 https://api.bintray.com/conan/cliutils/CLI11
 
 mkdir -p ~/.conan/profiles
 cp travis/default ~/.conan/profiles/default
+
+# Use the conanfile which doesn't contain Qt
+rm conanfile.txt
+cp travis/conanfile.txt conanfile.txt
