@@ -15,5 +15,5 @@ mkdir -p ~/.conan/profiles
 cp travis/default ~/.conan/profiles/default
 
 # Use the conanfile which doesn't contain Qt
-rm ~/conanfile.txt
-cp travis/conanfile.txt ~/conanfile.txt
+rm conanfile.txt
+cp travis/conanfile.txt conanfile.txt
