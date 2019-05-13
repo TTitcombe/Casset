@@ -13,7 +13,7 @@ public:
   StockInfo(const std::string &symbol, const std::string &date,
             const float close);
   std::string getSymbol() const;
-  std::string getStockReport() const;
+  std::string getReport() const;
   float getClose() const;
   void setShares(const int numberOfShares);
   float getValue() const;

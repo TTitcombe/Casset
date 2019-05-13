@@ -39,7 +39,7 @@ void Presenter::onViewButtonClicked() {
   if (m_iex.isValidSymbol(symbol)) {
     const json chart = m_iex.getChart(symbol);
     StockInfo stock(symbol, chart);
-    m_view->updateStockMessage(stock.getStockReport());
+    m_view->updateStockMessage(stock.getReport());
   } else {
     const std::string message = fmt::format("{} was not a recognised stock symbol", symbol);
     m_view->updateStockMessage(message);

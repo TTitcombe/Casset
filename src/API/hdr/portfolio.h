@@ -16,6 +16,7 @@ public:
     void rename(const std::string &name);
     std::string getName() const;
     float getValue() const;
+    std::string getReport() const;
 
     bool operator==(const Portfolio &p) const{
       return m_value == p.getValue();

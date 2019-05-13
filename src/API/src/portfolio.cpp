@@ -43,3 +43,11 @@ std::string Portfolio::getName() const {
 float Portfolio::getValue() const {
   return m_value;
 }
+
+std::string Portfolio::getReport() const {
+  std::string message = fmt::format("Portfolio {}\n", m_name);
+  for (const auto &stock : m_stocks) {
+    message += fmt::format("{}: {}\n", stock.first, stock.second.getValue());
+  }
+  return message;
+}

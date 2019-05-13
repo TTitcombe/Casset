@@ -63,6 +63,23 @@ SCENARIO("Portfolios can manage a number of stocks.") {
         REQUIRE_THROWS_AS(portfolio.removeStock("ABCD"), std::invalid_argument);
       }
     }
+
+    WHEN("We add multiple stocks") {
+      portfolio.addStock(1, abcd);
+      portfolio.addStock(10, aapl);
+
+      THEN("The value should not be overwritten") {
+        REQUIRE(portfolio.getValue() == 123. + 1000.);
+      }
+
+      THEN("A portfolio report should be created") {
+        const std::string expected_message =
+                "Portfolio MyPortfolio\n"
+                "AAPL: 1000\n"
+                "ABCD: 123\n";
+        REQUIRE(portfolio.getReport() == expected_message);
+      }
+    }
   }
 
   GIVEN("Two portfolios") {
