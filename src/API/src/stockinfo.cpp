@@ -12,7 +12,7 @@ StockInfo::StockInfo(const std::string &symbol, const json &stockChart) {
 }
 
 StockInfo::StockInfo(const std::string &symbol, const std::string &date,
-                     const float close) : m_symbol(symbol), m_date(date), m_close(close) {
+                     const float close) : m_close(close), m_date(date), m_symbol(symbol) {
 
 }
 

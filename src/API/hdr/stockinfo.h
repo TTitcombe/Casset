@@ -13,10 +13,10 @@ public:
   std::string getStockReport() const;
   float getClose() const;
 private:
-  float m_close;
   float m_open;
-  float m_high;
+  float m_close;
   float m_low;
+  float m_high;
   std::string m_date;
   std::string m_symbol;
   template <class T>
