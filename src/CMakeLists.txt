@@ -14,7 +14,6 @@ set(HDR_FILES
   UI/hdr/mainwindow.ui
 )
 
-find_package(Qt)  # For Travis CI
 find_package(Qt5Core CONFIG REQUIRED)
 find_package(Qt5Widgets CONFIG REQUIRED)
 
