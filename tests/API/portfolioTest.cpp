@@ -47,12 +47,18 @@ SCENARIO("Portfolios can manage a number of stocks.") {
     WHEN("We remove a stock the portfolio contains") {
       portfolio.addStock(10, abcd);
       portfolio.removeStock("ABCD");
+
       THEN("The portfolio should no longer contain the stock") {
         REQUIRE(!portfolio.hasStock("ABCD"));
+      }
+
+      THEN("The portfolio value should have decreased") {
+        REQUIRE(portfolio.getValue() == 0.);
       }
     }
 
     WHEN("We remove a stock which the portfolio does not contain") {
+
       THEN("An error should be raised") {
         REQUIRE_THROWS_AS(portfolio.removeStock("ABCD"), std::invalid_argument);
       }

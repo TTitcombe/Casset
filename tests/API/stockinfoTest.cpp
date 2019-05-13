@@ -70,4 +70,31 @@ SCENARIO("StockInfo objects can store useful information on a stock.") {
       }
     }
   }
+
+  GIVEN("An initialized StockInfo object") {
+    json chart = json::parse(R"({"close": 100.0, "date": "2019-01-01"})");
+    StockInfo stock("AAPL", chart);
+
+    WHEN("We provide the stock with a positive number of shares") {
+      stock.setShares(10);
+
+      THEN("The value is calculated from its close price") {
+        REQUIRE(stock.getValue() == 100. * 10);
+      }
+    }
+
+    WHEN("We provide the stock with a negative number of shares") {
+
+      THEN("An error is raised") {
+        REQUIRE_THROWS_AS(stock.setShares(-10), std::invalid_argument);
+      }
+    }
+
+    WHEN("We try to get the stock's value before setting a number of shares") {
+
+      THEN("An error is raised") {
+        REQUIRE_THROWS_AS(stock.getValue(), std::runtime_error);
+      }
+    }
+  }
 }

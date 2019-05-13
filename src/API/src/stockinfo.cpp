@@ -2,6 +2,8 @@
 
 #include "../hdr/stockinfo.h"
 
+StockInfo::StockInfo() {}
+
 StockInfo::StockInfo(const std::string &symbol, const json &stockChart) {
   m_open = extractFromJson<float>("open", stockChart);
   m_close = extractFromJson<float>("close", stockChart);
@@ -26,6 +28,20 @@ std::string StockInfo::getStockReport() const {
 
 float StockInfo::getClose() const {
   return m_close;
+}
+
+void StockInfo::setShares(const int numberOfShares) {
+  if (numberOfShares <= 0) {
+    throw std::invalid_argument("You can only hold a positive, non-zero number of shares");
+  }
+  m_shares = numberOfShares;
+}
+
+float StockInfo::getValue() const {
+  if (m_shares == 0) {
+    throw std::runtime_error(fmt::format("Stock {} has no value until a number of shares has been set", m_symbol));
+  }
+  return m_shares * m_close;
 }
 
 template <class T>
