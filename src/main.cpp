@@ -42,6 +42,7 @@ int main(int argc, char **argv) {
     Logger->debug("QApplication created");
 
     UI::MainWindow *casset_window = new UI::MainWindow();
+    casset_window->setAttribute( Qt::WA_DeleteOnClose );
     UI::Presenter presenter(casset_window);
     Logger->debug("Casset main window created");
     casset_window->show();
