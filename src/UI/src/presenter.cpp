@@ -11,12 +11,21 @@ using json = nlohmann::json;
 
 namespace UI {
 Presenter::Presenter(MainWindow *v) : m_view(v) {
+  this->m_iex = std::make_unique<API::IEX>();
+
   QObject::connect(m_view, SIGNAL(ViewButtonClicked()), this, SLOT(onViewButtonClicked()));
   try {
       m_logger = spdlog::stderr_color_mt("PRESENTER_LOG");
   } catch (spdlog::spdlog_ex) {
       m_logger = spdlog::get("PRESENTER_LOG");
   }
+}
+
+Presenter::Presenter(MainWindow *v, std::unique_ptr<API::IEXInterface> iex) : m_view(v) {
+  // this class is for testing purposes only. iex can be a mocked out API parser
+  this->m_iex = iex;
+
+  QObject::connect(m_view, SIGNAL(ViewButtonClicked()), this, SLOT(onViewButtonClicked()));
 }
 
 void Presenter::onViewButtonClicked() {
@@ -36,8 +45,8 @@ void Presenter::onViewButtonClicked() {
   }
   // Stock symbols are uppercase
   std::transform(symbol.begin(), symbol.end(),symbol.begin(), ::toupper);
-  if (m_iex.isValidSymbol(symbol)) {
-    const json chart = m_iex.getChart(symbol);
+  if (m_iex->isValidSymbol(symbol)) {
+    const json chart = m_iex->getChart(symbol);
     StockInfo stock(symbol, chart);
     m_view->updateStockMessage(stock.getStockReport());
   } else {
