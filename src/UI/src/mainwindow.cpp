@@ -20,7 +20,7 @@ MainWindow::~MainWindow() {
     delete m_ui;
 }
 
-std::string MainWindow::getSymbol() const {
+std::string MainWindow::getSymbol() {
   return m_ui->symbolLineEdit->text().toStdString();
 }
 

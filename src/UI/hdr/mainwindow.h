@@ -15,8 +15,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void updateStockMessage(const std::string &message);
-    std::string getSymbol() const;
+    virtual void updateStockMessage(const std::string &message);
+    virtual std::string getSymbol();
 
     signals:
             void ViewButtonClicked();

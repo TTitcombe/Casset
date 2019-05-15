@@ -21,10 +21,9 @@ Presenter::Presenter(MainWindow *v) : m_view(v) {
   }
 }
 
-Presenter::Presenter(MainWindow *v, std::unique_ptr<API::IEXInterface> iex) : m_view(v) {
+Presenter::Presenter(MainWindow *v, std::unique_ptr<API::IEXInterface> &iex) :
+  m_view(v), m_iex(std::move(iex)) {
   // this class is for testing purposes only. iex can be a mocked out API parser
-  this->m_iex = iex;
-
   QObject::connect(m_view, SIGNAL(ViewButtonClicked()), this, SLOT(onViewButtonClicked()));
 }
 

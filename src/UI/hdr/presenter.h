@@ -10,7 +10,7 @@ class Presenter : public QObject {
   Q_OBJECT
 public:
   Presenter(MainWindow *v);
-  Presenter(MainWindow *v, std::unique_ptr<API::IEXInterface> iex);
+  Presenter(MainWindow *v, std::unique_ptr<API::IEXInterface> &iex);
 
 public slots:
   void onViewButtonClicked();
