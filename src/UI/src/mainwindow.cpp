@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
         m_ui->setupUi(this);
         this->setWindowTitle("Casset");
 
-        QObject::connect(m_ui->stockButton, SIGNAL(clicked()), this, SIGNAL(ViewButtonClicked()));
+        QObject::connect(m_ui->stockButton, SIGNAL(clicked()), this, SIGNAL(StockButtonClicked()));
 }
 
 MainWindow::~MainWindow() {

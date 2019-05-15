@@ -13,7 +13,7 @@ namespace UI {
 Presenter::Presenter(MainWindow *v) : m_view(v) {
   this->m_iex = std::make_unique<API::IEX>();
 
-  QObject::connect(m_view, SIGNAL(ViewButtonClicked()), this, SLOT(onViewButtonClicked()));
+  QObject::connect(m_view, SIGNAL(StockButtonClicked()), this, SLOT(onStockButtonClicked()));
   try {
       m_logger = spdlog::stderr_color_mt("PRESENTER_LOG");
   } catch (spdlog::spdlog_ex) {
@@ -24,22 +24,22 @@ Presenter::Presenter(MainWindow *v) : m_view(v) {
 Presenter::Presenter(MainWindow *v, std::unique_ptr<API::IEXInterface> &iex) :
   m_view(v), m_iex(std::move(iex)) {
   // this class is for testing purposes only. iex can be a mocked out API parser
-  QObject::connect(m_view, SIGNAL(ViewButtonClicked()), this, SLOT(onViewButtonClicked()));
+  QObject::connect(m_view, SIGNAL(StockButtonClicked()), this, SLOT(onStockButtonClicked()));
 }
 
-void Presenter::onViewButtonClicked() {
+void Presenter::onStockButtonClicked() {
   std::string symbol = m_view->getSymbol();
   // Stock symbols can only be 4 characters at most
   if (symbol.length() > 4) {
     const std::string message = fmt::format("{} is too long for a stock symbol", symbol);
-    m_view->updateStockMessage(message);
+    updateStockMessage(message);
     return;
   }
 
   // Stock symbols contain alphabetical characters only
   if (!std::regex_match(symbol, std::regex("^[A-Za-z]+$"))) {
-    const std::string message = fmt::format("{} contains not alphabetical characters", symbol);
-    m_view->updateStockMessage(message);
+    const std::string message = fmt::format("{} contains non alphabetical characters", symbol);
+    updateStockMessage(message);
     return;
   }
   // Stock symbols are uppercase
@@ -47,10 +47,14 @@ void Presenter::onViewButtonClicked() {
   if (m_iex->isValidSymbol(symbol)) {
     const json chart = m_iex->getChart(symbol);
     StockInfo stock(symbol, chart);
-    m_view->updateStockMessage(stock.getStockReport());
+    updateStockMessage(stock.getStockReport());
   } else {
     const std::string message = fmt::format("{} was not a recognised stock symbol", symbol);
-    m_view->updateStockMessage(message);
+    updateStockMessage(message);
   }
+}
+
+void Presenter::updateStockMessage(const std::string &message) {
+  m_view->updateStockMessage(message);
 }
 } // UI

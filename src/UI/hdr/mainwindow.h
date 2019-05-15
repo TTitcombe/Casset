@@ -15,11 +15,11 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    virtual void updateStockMessage(const std::string &message);
+    void updateStockMessage(const std::string &message);
     virtual std::string getSymbol();
 
     signals:
-            void ViewButtonClicked();
+            void StockButtonClicked();
 private:
     ::Ui::MainWindow *m_ui;
 
