@@ -63,7 +63,7 @@ SCENARIO("The Presenter object can handle user actions and model updates.") {
     // Start QApplication
     char *argv[] = {"program name", NULL};
     int argc = sizeof(argv) / sizeof(char*) - 1;
-    QApplication app(argc, argv);
+    QApplication qapp(argc, argv);
 
     // Create the presenter with mocked view and IEX
     std::shared_ptr<UI::MainWindow> casset_window = std::make_shared<MainWindowMock>("aLongStock");
@@ -81,7 +81,7 @@ SCENARIO("The Presenter object can handle user actions and model updates.") {
   GIVEN("A presenter with a mocked view which returns a non-alphanumerical stock") {
     char *argv[] = {"program name", NULL};
     int argc = sizeof(argv) / sizeof(char*) - 1;
-    QApplication app(argc, argv);
+    QApplication qapp(argc, argv);
 
     // Create the presenter with mocked view and IEX
     std::shared_ptr<UI::MainWindow> casset_window = std::make_shared<MainWindowMock>("a!a");

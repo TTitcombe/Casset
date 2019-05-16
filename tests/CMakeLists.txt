@@ -21,6 +21,7 @@ set(HDR_TEST_FILES
 )
 
 find_package(Qt5Core CONFIG REQUIRED)
+find_package(Qt5Gui CONFIG REQUIRED)
 find_package(Qt5Widgets CONFIG REQUIRED)
 
 add_executable(UnitTests ${SRC_TEST_FILES} ${HDR_TEST_FILES})
@@ -32,4 +33,5 @@ target_link_libraries(UnitTests CONAN_PKG::catch2
                                 CONAN_PKG::spdlog
                                 CONAN_PKG::CLI11
                                 Qt5::Core
+                                Qt5::Gui
                                 Qt5::Widgets)

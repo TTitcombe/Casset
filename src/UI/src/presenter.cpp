@@ -16,7 +16,7 @@ Presenter::Presenter(std::shared_ptr<MainWindow> v) : m_view(v) {
   QObject::connect(m_view.get(), SIGNAL(StockButtonClicked()), this, SLOT(onStockButtonClicked()));
   try {
       m_logger = spdlog::stderr_color_mt("PRESENTER_LOG");
-  } catch (spdlog::spdlog_ex) {
+  } catch (spdlog::spdlog_ex &) {
       m_logger = spdlog::get("PRESENTER_LOG");
   }
 }
