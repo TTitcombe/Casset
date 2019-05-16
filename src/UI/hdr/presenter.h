@@ -9,13 +9,13 @@ namespace UI {
 class Presenter : public QObject {
   Q_OBJECT
 public:
-  Presenter(MainWindow &v);
+  Presenter(MainWindow *v);
 
 public slots:
   void onViewButtonClicked();
 
 private:
-  MainWindow &m_view;
+  MainWindow *m_view = nullptr;
   API::IEX m_iex;
   std::shared_ptr<spdlog::logger> m_logger;
 };

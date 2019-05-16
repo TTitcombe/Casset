@@ -16,7 +16,6 @@ set(HDR_FILES
 
 find_package(Qt5Core CONFIG REQUIRED)
 find_package(Qt5Widgets CONFIG REQUIRED)
-find_package(Qt5Gui CONFIG REQUIRED)
 
 add_executable(Casset ${SRC_FILES} ${HDR_FILES})
 target_link_libraries(Casset CONAN_PKG::cpr
@@ -25,5 +24,4 @@ target_link_libraries(Casset CONAN_PKG::cpr
                              CONAN_PKG::CLI11
                              CONAN_PKG::spdlog
                              Qt5::Core
-                             Qt5::Widgets
-                             Qt5::Gui)
+                             Qt5::Widgets)
