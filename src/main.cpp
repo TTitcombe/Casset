@@ -38,12 +38,12 @@ int main(int argc, char **argv) {
     // Set the log level
     setLogLevel(spdlog_level);
 
-    QApplication app(argc, argv);
+    QApplication qapp(argc, argv);
     Logger->debug("QApplication created");
 
-    UI::MainWindow *casset_window = new UI::MainWindow();
+    UI::MainWindow casset_window {};
     UI::Presenter presenter(casset_window);
     Logger->debug("Casset main window created");
-    casset_window->show();
-    return app.exec();
+    casset_window.show();
+    return qapp.exec();
 }
