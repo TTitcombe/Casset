@@ -1,7 +1,8 @@
 #include <CLI/CLI.hpp>
-#include <QApplication>
+#include <memory>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
+#include <QApplication>
 
 #include "API/hdr/IEX.h"
 #include "UI/hdr/mainwindow.h"
@@ -41,8 +42,7 @@ int main(int argc, char **argv) {
     QApplication app(argc, argv);
     Logger->debug("QApplication created");
 
-    UI::MainWindow *casset_window = new UI::MainWindow();
-    casset_window->setAttribute( Qt::WA_DeleteOnClose );
+    auto casset_window = std::make_shared<UI::MainWindow>();
     UI::Presenter presenter(casset_window);
     Logger->debug("Casset main window created");
     casset_window->show();

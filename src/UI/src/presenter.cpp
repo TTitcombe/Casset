@@ -10,10 +10,10 @@
 using json = nlohmann::json;
 
 namespace UI {
-Presenter::Presenter(MainWindow *v) : m_view(v) {
+Presenter::Presenter(std::shared_ptr<MainWindow> v) : m_view(v) {
   this->m_iex = std::make_unique<API::IEX>();
 
-  QObject::connect(m_view, SIGNAL(StockButtonClicked()), this, SLOT(onStockButtonClicked()));
+  QObject::connect(m_view.get(), SIGNAL(StockButtonClicked()), this, SLOT(onStockButtonClicked()));
   try {
       m_logger = spdlog::stderr_color_mt("PRESENTER_LOG");
   } catch (spdlog::spdlog_ex) {
@@ -21,10 +21,10 @@ Presenter::Presenter(MainWindow *v) : m_view(v) {
   }
 }
 
-Presenter::Presenter(MainWindow *v, std::unique_ptr<API::IEXInterface> &iex) :
+Presenter::Presenter(std::shared_ptr<MainWindow> v, std::unique_ptr<API::IEXInterface> &iex) :
   m_view(v), m_iex(std::move(iex)) {
   // this class is for testing purposes only. iex can be a mocked out API parser
-  QObject::connect(m_view, SIGNAL(StockButtonClicked()), this, SLOT(onStockButtonClicked()));
+  QObject::connect(m_view.get(), SIGNAL(StockButtonClicked()), this, SLOT(onStockButtonClicked()));
 }
 
 void Presenter::onStockButtonClicked() {

@@ -9,8 +9,8 @@ namespace UI {
 class Presenter : public QObject {
   Q_OBJECT
 public:
-  Presenter(MainWindow *v);
-  Presenter(MainWindow *v, std::unique_ptr<API::IEXInterface> &iex);
+  explicit Presenter(std::shared_ptr<MainWindow> v);
+  explicit Presenter(std::shared_ptr<MainWindow> v, std::unique_ptr<API::IEXInterface> &iex);
 
 public slots:
   void onStockButtonClicked();
@@ -18,7 +18,7 @@ public slots:
 private:
   virtual void updateStockMessage(const std::string &message);
 
-  MainWindow *m_view = nullptr;
+  std::shared_ptr<MainWindow> m_view = nullptr;
   std::unique_ptr<API::IEXInterface> m_iex;
   std::shared_ptr<spdlog::logger> m_logger;
 };

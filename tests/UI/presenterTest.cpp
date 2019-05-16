@@ -1,5 +1,6 @@
 #include <catch2/catch.hpp>
 #include <catch2/trompeloeil.hpp>
+#include <memory>
 #include <QApplication>
 
 #include "../../src/UI/hdr/presenter.h"
@@ -40,7 +41,7 @@ public:
 // as can't get trompeloeil to work with pointers
 class MainWindowMock : public UI::MainWindow {
 public:
-  MainWindowMock(const std::string &mock_symbol, QWidget *parent = nullptr) :
+  explicit MainWindowMock(const std::string &mock_symbol, QWidget *parent = nullptr) :
     m_mock_symbol(mock_symbol), UI::MainWindow(parent) {}
   std::string getSymbol() override {
     return m_mock_symbol;
@@ -53,8 +54,8 @@ private:
 class PresenterMock : public UI::Presenter {
 public:
     MAKE_MOCK1(updateStockMessage, void(const std::string &), override);
-    PresenterMock(UI::MainWindow *v, std::unique_ptr<API::IEXInterface> &iex) :
-      UI::Presenter(v, iex) {}
+    explicit PresenterMock(std::shared_ptr<UI::MainWindow> v, std::unique_ptr<API::IEXInterface> iex) :
+      Presenter(v, iex) {}
 };
 
 SCENARIO("The Presenter object can handle user actions and model updates.") {
@@ -65,9 +66,9 @@ SCENARIO("The Presenter object can handle user actions and model updates.") {
     QApplication app(argc, argv);
 
     // Create the presenter with mocked view and IEX
-    UI::MainWindow *casset_window = new MainWindowMock("aLongStock");
+    std::shared_ptr<UI::MainWindow> casset_window = std::make_shared<MainWindowMock>("aLongStock");
     std::unique_ptr<API::IEXInterface> iex = std::make_unique<API::IEXMockFalse>();
-    PresenterMock presenter(casset_window, iex);
+    PresenterMock presenter(casset_window, std::move(iex));
 
     WHEN("We click the button to get stock data for a symbol greater than 4 characters long") {
       THEN("We should expect the view message to explain the stock symbol is too long") {
@@ -75,7 +76,6 @@ SCENARIO("The Presenter object can handle user actions and model updates.") {
         presenter.onStockButtonClicked();
       }
     }
-    delete casset_window;
   }
 
   GIVEN("A presenter with a mocked view which returns a non-alphanumerical stock") {
@@ -84,9 +84,9 @@ SCENARIO("The Presenter object can handle user actions and model updates.") {
     QApplication app(argc, argv);
 
     // Create the presenter with mocked view and IEX
-    UI::MainWindow *casset_window = new MainWindowMock("a!a");
-    std::unique_ptr<API::IEXInterface> iex = std::make_unique<API::IEXMockFalse>();
-    PresenterMock presenter(casset_window, iex);
+    std::shared_ptr<UI::MainWindow> casset_window = std::make_shared<MainWindowMock>("a!a");
+    auto iex = std::make_unique<API::IEXMockFalse>();
+    PresenterMock presenter(casset_window, std::move(iex));
 
     WHEN("We click the button to get stock data for a symbol which contains non alphanumeric characters") {
 
@@ -95,6 +95,5 @@ SCENARIO("The Presenter object can handle user actions and model updates.") {
         presenter.onStockButtonClicked();
       }
     }
-    delete casset_window;
   }
 }
