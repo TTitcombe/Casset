@@ -10,8 +10,8 @@
 using json = nlohmann::json;
 
 namespace UI {
-Presenter::Presenter(MainWindow *v) : m_view(v) {
-  QObject::connect(m_view, SIGNAL(ViewButtonClicked()), this, SLOT(onViewButtonClicked()));
+Presenter::Presenter(std::shared_ptr<MainWindow> v) : m_view(v) {
+  QObject::connect(m_view.get(), SIGNAL(ViewButtonClicked()), this, SLOT(onViewButtonClicked()));
   try {
       m_logger = spdlog::stderr_color_mt("PRESENTER_LOG");
   } catch (spdlog::spdlog_ex) {

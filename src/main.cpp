@@ -2,6 +2,7 @@
 #include <QApplication>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
+#include <memory>
 
 #include "API/hdr/IEX.h"
 #include "UI/hdr/mainwindow.h"
@@ -41,7 +42,7 @@ int main(int argc, char **argv) {
     QApplication app(argc, argv);
     Logger->debug("QApplication created");
 
-    UI::MainWindow *casset_window = new UI::MainWindow();
+    auto casset_window = std::make_shared<UI::MainWindow>();
     UI::Presenter presenter(casset_window);
     Logger->debug("Casset main window created");
     casset_window->show();
