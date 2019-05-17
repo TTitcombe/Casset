@@ -1,3 +1,5 @@
+#ifndef API_STOCK_INFO_H_
+#define API_STOCK_INFO_H_
 #include <string>
 
 #include <nlohmann/json.hpp>
@@ -22,3 +24,4 @@ private:
   template <class T>
   T extractFromJson(const std::string &key, const json &stockChart) const;
 };
+#endif // API_STOCKINFO_H_

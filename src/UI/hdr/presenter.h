@@ -1,3 +1,6 @@
+#ifndef UI_PRESENTER_H_
+#define UI_PRESENTER_H_
+
 #include <QObject>
 #include <spdlog/sinks/stdout_color_sinks.h>
 #include <spdlog/spdlog.h>
@@ -20,3 +23,4 @@ private:
   std::shared_ptr<spdlog::logger> m_logger;
 };
 } // UI
+#endif // UI_PRESENTER_H_
