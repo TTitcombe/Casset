@@ -42,7 +42,7 @@ public:
 class MainWindowMock : public UI::MainWindow {
 public:
   explicit MainWindowMock(const std::string &mock_symbol, QWidget *parent = nullptr) :
-    m_mock_symbol(mock_symbol), UI::MainWindow(parent) {}
+  m_mock_symbol(mock_symbol) {(void)parent;}
   std::string getSymbol() override {
     return m_mock_symbol;
   };
@@ -61,7 +61,8 @@ public:
 SCENARIO("The Presenter object can handle user actions and model updates.") {
   GIVEN("A presenter object, which holds a view, and can make API calls") {
     // Start QApplication
-    char *argv[] = {"program name", NULL};
+    char programName[] = "program name";
+    char *argv[] = {programName, nullptr};
     int argc = sizeof(argv) / sizeof(char*) - 1;
     QApplication qapp(argc, argv);
 
@@ -79,7 +80,8 @@ SCENARIO("The Presenter object can handle user actions and model updates.") {
   }
 
   GIVEN("A presenter with a mocked view which returns a non-alphanumerical stock") {
-    char *argv[] = {"program name", NULL};
+    char programName[] = "program name";
+    char *argv[] = {programName, nullptr};
     int argc = sizeof(argv) / sizeof(char*) - 1;
     QApplication qapp(argc, argv);
 
