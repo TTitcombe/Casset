@@ -10,6 +10,7 @@ OpenSSL/1.0.2n@conan/stable
 
 [generators]
 cmake
+virtualrunenv
 
 [options]
 cpr:use_openssl=False
@@ -17,4 +18,5 @@ cpr:use_openssl=False
 [imports]
 bin, *.dll -> ./bin
 bin, *.conf -> ./bin
+lib, *.so* -> ./lib
 plugins, * -> ./plugins
