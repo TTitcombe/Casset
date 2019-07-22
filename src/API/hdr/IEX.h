@@ -12,7 +12,13 @@ using json = nlohmann::json;
 
 namespace API {
 
-class IEX {
+class IEXInterface {
+public:
+    virtual json getChart(const std::string &symbol) = 0;
+    virtual bool isValidSymbol(const std::string &symbol) = 0;
+};
+
+class IEX : public IEXInterface {
 public:
   IEX();
   json getChart(const std::string &symbol);

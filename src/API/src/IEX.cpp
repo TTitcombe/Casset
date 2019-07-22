@@ -5,7 +5,7 @@ namespace API {
 IEX::IEX() {
     try {
         m_logger = spdlog::stderr_color_mt("IEX_LOG");
-    } catch (spdlog::spdlog_ex) {
+    } catch (spdlog::spdlog_ex &) {
         m_logger = spdlog::get("IEX_LOG");
     }
 }

@@ -12,14 +12,17 @@ namespace UI {
 class Presenter : public QObject {
   Q_OBJECT
 public:
-  Presenter(MainWindow *v);
+  explicit Presenter(std::shared_ptr<MainWindow> v);
+  explicit Presenter(std::shared_ptr<MainWindow> v, std::unique_ptr<API::IEXInterface> &iex);
 
 public slots:
-  void onViewButtonClicked();
+  void onStockButtonClicked();
 
 private:
-  MainWindow *m_view = nullptr;
-  API::IEX m_iex;
+  virtual void updateStockMessage(const std::string &message);
+
+  std::shared_ptr<MainWindow> m_view = nullptr;
+  std::unique_ptr<API::IEXInterface> m_iex;
   std::shared_ptr<spdlog::logger> m_logger;
 };
 } // UI

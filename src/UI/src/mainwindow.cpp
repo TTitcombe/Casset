@@ -13,14 +13,14 @@ MainWindow::MainWindow(QWidget *parent) :
         m_ui->setupUi(this);
         this->setWindowTitle("Casset");
 
-        QObject::connect(m_ui->stockButton, SIGNAL(clicked()), this, SIGNAL(ViewButtonClicked()));
+        QObject::connect(m_ui->stockButton, SIGNAL(clicked()), this, SIGNAL(StockButtonClicked()));
 }
 
 MainWindow::~MainWindow() {
     delete m_ui;
 }
 
-std::string MainWindow::getSymbol() const {
+std::string MainWindow::getSymbol() {
   return m_ui->symbolLineEdit->text().toStdString();
 }
 
